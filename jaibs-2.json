@@ -1,0 +1,76 @@
+{
+    "Altindische Grammatik": {
+        "abbreviation": [
+            "AiG"
+        ],
+        "edition": [
+            {
+                "bibliography": "Wackernagel, Jacob, Albert Debrunner (et al.). 1896–1964. Altindische Grammatik. Göttingen: Vandenhoeck:"
+            },
+            {
+                "bibliography": "Wackernagel, Jacob. 1896. Einleitung, Bd. I. Lautlehre."
+            },
+            {
+                "bibliography": "Wackernagel, Jacob. 1905. Bd. II, 1 Einleitung zur Wortlehre. Nominalkomposition."
+            },
+            {
+                "bibliography": "Wackernagel/Debrunner. 1930. Bd. III Nominalflexion, Zahlwort, Pronomen."
+            },
+            {
+                "bibliography": "Debrunner, Albert. 1954. Bd. II, 2. Die Nominalsuffixe."
+            },
+            {
+                "bibliography": "Debrunner, Albert. 1957a. Nachträge zu Bd. I."
+            },
+            {
+                "bibliography": "Debrunner, Albert. 1957b. Nachträge zu Bd. II,1."
+            },
+            {
+                "bibliography": "Renou, Louis. 1957. Introduction générale. Nouvelle edition du texte paru en 1896, au tome I."
+            },
+            {
+                "bibliography": "Hauschild, Richard. 1964. Register zur Altindischen Grammatik von J. Wackernagel und A. Debrunner (Bd. I–III)."
+            }
+        ]
+    },
+    "Altindische Syntax": {
+        "abbreviation": [
+            "AiSynt",
+            "AiS"
+        ],
+        "edition": {
+            "bibliography": "Bertold Delbrück. 1888. Altindische Syntax. Syntaktische Forschungen, V. Halle an der Saale: Buchhandlung des Waisenhauses."
+        }
+    },
+    "Etymologisches Wörterbuch des Altindarischen": {
+        "abbreviation": [
+            "EWAia",
+            "Mayrhofer EWAia"
+        ],
+        "edition": [
+            {
+                "bibliography": "Mayrhofer, Manfred. 1992–2001. Etymologisches Wörterbuch des Altindoarischen. Heidelberg: Winter (Bearbeitet 1985–, in den Faszikeln erschienen 1986–)."
+            }
+        ]
+    },
+    "Grosses Petersburger Wörterbuch": {
+        "abbreviation": [
+            "PW",
+            "Böhtlingk–Roth"
+        ],
+        "edition": {
+            "bibliography": "Böhtlingk, Otto, Rudolph Roth. 1855–1875. Sanskrit-Wörterbuch. 7 Bde. St. Petersburg: Kaiserliche Akademie der Wissenschaften."
+        }
+    },
+    "Kleines Petersburger Wörterbuch": {
+        "abbreviation": [
+            "pw",
+            "Böhtlingk Wb."
+        ],
+        "edition": [
+            {
+                "bibliography": "Böhtlingk, Otto. 1879–1889. Sanskrit-Wörterbuch in kürzerer Fassung. 7 Bde. St. Petersburg: Kaiserliche Akademie der Wissenschaften."
+            }
+        ]
+    }
+}
