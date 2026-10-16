@@ -1,0 +1,66 @@
+{
+  "common": {
+    "skipLink": "Skip to content",
+    "language": {
+      "label": "Language"
+    },
+    "theme": {
+      "label": "Theme",
+      "system": "Use device setting",
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "nav": {
+      "label": "Veda Bib",
+      "search": "Search"
+    },
+    "noscript": "JavaScript is required to search. Data sources and terms are available below."
+  },
+  "page": {
+    "title": "Bibliography search | Veda Bib"
+  },
+  "search": {
+    "title": "Abbreviations and bibliography",
+    "lead": "Look up abbreviations and bibliography in Vedic philology from JAIBS.",
+    "form": {
+      "label": "Search the JAIBS bibliography",
+      "query": "Search term",
+      "placeholder": "Enter a title or abbreviation",
+      "hint": "Search titles and abbreviations, ignoring case. Edition text is not searched. Leave blank to show all entries.",
+      "dataset": "Dataset",
+      "submit": "Search"
+    },
+    "datasets": {
+      "jaibs-1": "Primary literature",
+      "jaibs-2": "Secondary literature"
+    },
+    "results": {
+      "title": "Search results",
+      "count": {
+        "one": "{count} entry (of {total})",
+        "other": "{count} entries (of {total})"
+      }
+    },
+    "meta": {
+      "abbreviation": "Abbreviations",
+      "edition": "Editions"
+    },
+    "status": {
+      "loadingTitle": "Loading entries",
+      "loadingBody": "You can keep changing your search term.",
+      "emptyTitle": "No matching entries",
+      "emptyBody": "Try a shorter search term or another dataset.",
+      "errorTitle": "Could not load entries",
+      "errorBody": "Your search term is preserved. Check your connection and try again.",
+      "retry": "Try again"
+    }
+  },
+  "footer": {
+    "about": "Bibliographic source material from JAIBS. Entry text is shown as supplied.",
+    "repository": "Source code (GitHub)",
+    "submit": "JAIBS submission page",
+    "data": "Source bibliography (Google Drive)",
+    "license": "Code license (MIT)",
+    "rights": "This project’s code is licensed under the MIT License. The terms for the bibliography data are unconfirmed, and the MIT License does not apply to the data."
+  }
+}
