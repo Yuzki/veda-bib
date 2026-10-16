@@ -1,19 +1,27 @@
-body {
-  font-family: sans-serif;
-  padding: 2rem;
-  max-width: 800px;
-  margin: auto;
+/* Service-specific layout; shared design tokens are kept unchanged. */
+.bib-search {
+  flex-wrap: wrap;
+  align-items: flex-end;
 }
-input {
-  padding: 0.5rem;
-  font-size: 1rem;
-  width: 100%;
-  margin-bottom: 1rem;
+
+.bib-search > .veda-field:first-child {
+  flex-basis: 100%;
 }
-ul {
-  list-style: none;
-  padding-left: 0;
+
+.veda-result__title,
+.veda-meta dd {
+  overflow-wrap: anywhere;
 }
-li {
-  margin-bottom: 1rem;
+
+.bib-abbreviations {
+  line-height: var(--veda-line-height-translit);
+}
+
+.bib-editions {
+  margin: 0;
+  padding-inline-start: var(--veda-space-5);
+}
+
+.bib-editions li + li {
+  margin-block-start: var(--veda-space-3);
 }
