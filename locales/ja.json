@@ -1,0 +1,66 @@
+{
+  "common": {
+    "skipLink": "本文へ移動",
+    "language": {
+      "label": "表示言語"
+    },
+    "theme": {
+      "label": "配色",
+      "system": "端末の設定に合わせる",
+      "light": "ライト",
+      "dark": "ダーク"
+    },
+    "nav": {
+      "label": "Veda Bib",
+      "search": "検索"
+    },
+    "noscript": "検索には JavaScript が必要です。データの出典と利用条件は下に記載しています。"
+  },
+  "page": {
+    "title": "略号・文献検索 | Veda Bib"
+  },
+  "search": {
+    "title": "略号・文献検索",
+    "lead": "JAIBS によるヴェーダ文献学の略号と書誌情報を調べます。",
+    "form": {
+      "label": "JAIBS の文献を検索",
+      "query": "検索語",
+      "placeholder": "書名または略号を入力",
+      "hint": "書名と略号の一部を検索します。大文字と小文字は区別しません。版の書誌情報は検索対象外です。空欄にすると全件を表示します。",
+      "dataset": "データセット",
+      "submit": "検索"
+    },
+    "datasets": {
+      "jaibs-1": "1次文献",
+      "jaibs-2": "2次文献"
+    },
+    "results": {
+      "title": "検索結果",
+      "count": {
+        "one": "{count}件（全{total}件中）",
+        "other": "{count}件（全{total}件中）"
+      }
+    },
+    "meta": {
+      "abbreviation": "略号",
+      "edition": "版の書誌情報"
+    },
+    "status": {
+      "loadingTitle": "項目を読み込んでいます",
+      "loadingBody": "検索語は、このまま変更できます。",
+      "emptyTitle": "該当する項目はありません",
+      "emptyBody": "検索語を短くするか、別のデータセットを選んでください。",
+      "errorTitle": "項目を読み込めませんでした",
+      "errorBody": "検索語は保持されています。接続を確認して、もう一度お試しください。",
+      "retry": "再試行"
+    }
+  },
+  "footer": {
+    "about": "JAIBS の書誌資料です。各項目の本文は原データのまま表示します。",
+    "repository": "ソースコード（GitHub）",
+    "submit": "JAIBS 投稿規定",
+    "data": "元の文献表（Google Drive）",
+    "license": "コードのライセンス（MIT、英語）",
+    "rights": "このプロジェクトのコードは MIT License で提供しています。書誌データの利用条件は未確認で、データには MIT License を適用しません。"
+  }
+}
