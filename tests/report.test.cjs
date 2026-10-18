@@ -12,7 +12,7 @@ const web = path.join(__dirname, "..");
 const html = fs.readFileSync(path.join(web, "index.html"), "utf8");
 const en = require("../locales/en.json");
 const ja = require("../locales/ja.json");
-const dir = path.join(web, "vendor/veda-design/0.1.0-pilot-0b90d3c");
+const dir = path.join(web, "vendor/veda-design/0.1.0-pilot-9d65cf4");
 
 test("footer has one report link for Veda Bib", () => {
     const links = html.match(/<a [^>]*data-veda-report-link[^>]*>/g) || [];
@@ -60,7 +60,7 @@ test("vendored report.js adds service and page without query or hash", () => {
 test("vendored files match SOURCE.md digests", () => {
     const source = fs.readFileSync(path.join(dir, "SOURCE.md"), "utf8");
     const rows = [...source.matchAll(/^\| `((?:styles|scripts)\/[^`]+)` \| `([0-9a-f]{64})` \|$/gm)];
-    assert.equal(rows.length, 6);
+    assert.equal(rows.length, 7);
     for (const [, file, digest] of rows) {
         assert.equal(crypto.createHash("sha256").update(fs.readFileSync(path.join(dir, file))).digest("hex"), digest, file);
     }
