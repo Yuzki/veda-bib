@@ -1,12 +1,15 @@
 {
   "common": {
     "skipLink": "Skip to content",
+    "settings": {
+      "label": "Display settings"
+    },
     "language": {
       "label": "Language"
     },
     "theme": {
-      "label": "Theme",
-      "system": "Use device setting",
+      "label": "Color theme",
+      "system": "Match device setting",
       "light": "Light",
       "dark": "Dark"
     },
@@ -53,6 +56,19 @@
       "errorTitle": "Could not load entries",
       "errorBody": "Your search term is preserved. Check your connection and try again.",
       "retry": "Try again"
+    },
+    "jump": {
+      "link": "Go to results"
+    },
+    "pagination": {
+      "label": "Result pages",
+      "prev": "Previous page",
+      "next": "Next page",
+      "page": "Page {page} of {pages}",
+      "range": {
+        "one": "Showing {from}–{to} of {count} entry",
+        "other": "Showing {from}–{to} of {count} entries"
+      }
     }
   },
   "footer": {

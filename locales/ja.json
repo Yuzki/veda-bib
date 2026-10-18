@@ -1,6 +1,9 @@
 {
   "common": {
     "skipLink": "本文へ移動",
+    "settings": {
+      "label": "表示設定"
+    },
     "language": {
       "label": "表示言語"
     },
@@ -53,6 +56,19 @@
       "errorTitle": "項目を読み込めませんでした",
       "errorBody": "検索語は保持されています。接続を確認して、もう一度お試しください。",
       "retry": "再試行"
+    },
+    "jump": {
+      "link": "検索結果へ移動"
+    },
+    "pagination": {
+      "label": "結果のページ移動",
+      "prev": "前のページ",
+      "next": "次のページ",
+      "page": "{page} / {pages} ページ",
+      "range": {
+        "one": "{from}–{to}件目 / 全{count}件",
+        "other": "{from}–{to}件目 / 全{count}件"
+      }
     }
   },
   "footer": {

@@ -31,23 +31,34 @@ remain unchanged and untranslated. If locale loading fails, the page remains
 usable in English. JavaScript is required for search; without it the source
 links and terms remain available.
 
-The theme control offers device settings, light, and dark, with saved explicit
-choices. The page includes a skip link, labelled controls, keyboard focus styles,
-and live result/status announcements.
+Language and color theme sit in a closed "Display settings" button at the end of
+the header; opening it shows an overlay panel (Esc, an outside click, or tabbing
+out closes it). The theme control offers device settings, light, and dark, with
+saved explicit choices; the open/closed state is not saved.
+
+Results show 50 entries per page. The count line keeps the total number of
+matches (for example "138 entries (of 138)"), and the page controls show the
+range ("Showing 1–50 of 138 entries"). Typing, Enter, and a dataset change go back
+to page 1 and keep the search term; a language change keeps the current page; the
+previous/next buttons and the "Go to results" link under the search form move
+focus to the results heading. The search scope is unchanged (titles and
+abbreviations only). The page includes a skip link, labelled controls, keyboard
+focus styles, and live result/status announcements.
 
 ## Shared design snapshot
 
 This pilot follows the approved [EWAia adoption approach](https://github.com/Yuzki/ewaia-abbreviations/pull/4).
-The six shared runtime assets are copied unmodified from commit `0b90d3c` of
-`Yuzki/veda-ai-design-system`, version 0.1.0 (unreleased, no tag), into
-`vendor/veda-design/0.1.0-pilot-0b90d3c/`. There are no CDN or other external
-runtime requests, build steps, or package dependencies.
+The seven shared runtime assets are copied unmodified from commit `9d65cf4` of
+`Yuzki/veda-ai-design-system` (upstream PR #9), version 0.1.0 (unreleased, no
+tag), into `vendor/veda-design/0.1.0-pilot-9d65cf4/`. There are no CDN or other
+external runtime requests, build steps, or package dependencies.
 
-See [SOURCE.md](vendor/veda-design/0.1.0-pilot-0b90d3c/SOURCE.md) for provenance,
+See [SOURCE.md](vendor/veda-design/0.1.0-pilot-9d65cf4/SOURCE.md) for provenance,
 SHA-256 digests, and terms. Do not edit vendored files. Update by copying a new
 pinned snapshot into a sibling directory and switching the paths in `index.html`;
-keep the old directory until verified. Roll back by restoring those paths or
-reverting the pilot commits. Service-specific styles belong in `style.css`.
+keep the old directory until verified. Roll back by reverting the rollout commits
+(the previous `0b90d3c` snapshot is kept). Service-specific styles belong in
+`style.css`.
 
 The footer "Report a problem" link opens the shared GitHub issue form with
 `service=Veda Bib`; `scripts/report.js` adds `page` (origin and path only, never
@@ -78,14 +89,18 @@ git diff --check
 The explicit file glob is needed because Node 24 does not accept `tests/` as a
 test entrypoint here. Tests compare the original predicate on both real datasets,
 check edition normalization, and validate locale keys, placeholders, plural
-forms, English fallbacks, static text, and profile files. No Python project or
+forms, English fallbacks, static text, and profile files, plus the 50-entry
+page ranges and the settings/jump/pagination markup. No Python project or
 Python application code is present, so Python lint/type/test checks do not apply.
 
 For browser verification, exercise both datasets, typing, Enter, query retention,
-no matches, request failure/retry, and blocked locale requests. Compare English
+no matches, request failure/retry, and blocked locale requests. Also page through
+all 138 primary entries, change dataset/language/theme while on a later page, and
+open the settings panel (Esc returns focus to its button, and the header height
+does not change). Compare English
 and Japanese with light/dark themes at 320, 390, 640, and 1280 px. Check wrapping,
 keyboard order, skip link, focus, reduced motion, and forced colors. Check all
-six vendored file digests against SOURCE.md after any snapshot update.
+seven vendored file digests against SOURCE.md after any snapshot update.
 
 ## License and data terms
 

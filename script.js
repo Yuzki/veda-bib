@@ -13,8 +13,23 @@ function normalizeEditions(edition) {
     return Array.isArray(edition) ? edition : [edition];
 }
 
+const PAGE_SIZE = 50;
+
+// Clamps `page` into range and returns the 1-based range shown on it.
+function paginate(total, page, size = PAGE_SIZE) {
+    const pages = Math.max(1, Math.ceil(total / size));
+    const current = Math.min(Math.max(Number.isInteger(page) ? page : 1, 1), pages);
+    const offset = (current - 1) * size;
+    return { page: current, pages, offset, from: total ? offset + 1 : 0, to: Math.min(offset + size, total) };
+}
+
 const FALLBACK = {
     "search.results.count": { one: "{count} entry (of {total})", other: "{count} entries (of {total})" },
+    "search.jump.link": "Go to results",
+    "search.pagination.prev": "Previous page",
+    "search.pagination.next": "Next page",
+    "search.pagination.page": "Page {page} of {pages}",
+    "search.pagination.range": { one: "Showing {from}–{to} of {count} entry", other: "Showing {from}–{to} of {count} entries" },
     "search.meta.abbreviation": "Abbreviations",
     "search.meta.edition": "Editions",
     "search.status.loadingTitle": "Loading entries",
@@ -42,11 +57,15 @@ function init() {
     const results = document.getElementById("results");
     const count = document.getElementById("result-count");
     const status = document.getElementById("search-status");
+    const jumpCount = document.getElementById("jump-count");
+    const heading = document.getElementById("results-title");
+    const nav = document.getElementById("pagination");
     const cache = new Map();
     let datasets = [];
     let data = {};
     let state = "loading";
     let request = 0;
+    let page = 1;
 
     function t(key, params) {
         if (window.VedaI18n?.lang) {
@@ -79,16 +98,23 @@ function init() {
         results.replaceChildren();
         status.replaceChildren();
         count.textContent = "";
+        jumpCount.textContent = "";
+        nav.hidden = true;
         results.setAttribute("aria-busy", String(state === "loading"));
         if (state !== "ready") {
             showStatus(state);
             return;
         }
         const entries = filterEntries(data, search.value);
-        count.textContent = t("search.results.count", { count: entries.length, total: Object.keys(data).length });
+        const summary = t("search.results.count", { count: entries.length, total: Object.keys(data).length });
+        count.textContent = summary; // the only live region; the jump line is plain text
+        jumpCount.textContent = summary;
         if (!entries.length) showStatus("empty");
+        const view = paginate(entries.length, page);
+        page = view.page;
+        renderPagination(view, entries.length);
         const fragment = document.createDocumentFragment();
-        for (const [title, value] of entries) {
+        for (const [title, value] of entries.slice(view.offset, view.offset + PAGE_SIZE)) {
             const li = element("li", undefined, "veda-result");
             li.append(source("h3", title, "veda-result__title"));
             const meta = element("dl", undefined, "veda-meta");
@@ -112,6 +138,21 @@ function init() {
             fragment.append(li);
         }
         results.append(fragment);
+    }
+
+    function renderPagination(view, total) {
+        nav.hidden = view.pages === 1;
+        document.getElementById("pagination-range").textContent = t("search.pagination.range", { from: view.from, to: view.to, count: total });
+        document.getElementById("page-current").textContent = t("search.pagination.page", { page: view.page, pages: view.pages });
+        document.getElementById("page-prev").disabled = view.page === 1;
+        document.getElementById("page-next").disabled = view.page === view.pages;
+    }
+
+    // An explicit page move shows the new page and lands on the results heading.
+    function goToPage(next) {
+        page = next;
+        render();
+        heading.focus();
     }
 
     function showStatus(kind) {
@@ -139,6 +180,7 @@ function init() {
     async function loadData(file) {
         const token = ++request;
         state = "loading";
+        page = 1;
         render();
         try {
             const loaded = cache.has(file) ? cache.get(file) : await fetchJson(file);
@@ -174,15 +216,26 @@ function init() {
         }
     }
 
-    search.addEventListener("input", render);
+    search.addEventListener("input", () => {
+        page = 1;
+        render();
+    });
     document.getElementById("search-form").addEventListener("submit", (event) => {
         event.preventDefault();
+        page = 1;
         render();
+    });
+    document.getElementById("page-prev").addEventListener("click", () => goToPage(page - 1));
+    document.getElementById("page-next").addEventListener("click", () => goToPage(page + 1));
+    jumpCount.parentElement.hidden = false; // the jump line needs this script
+    document.getElementById("goto-results").addEventListener("click", (event) => {
+        event.preventDefault();
+        heading.focus();
     });
     select.addEventListener("change", () => loadData(select.value));
     document.addEventListener("veda:languagechange", render);
     loadDatasets();
 }
 
-if (typeof module !== "undefined") module.exports = { filterEntries, normalizeEditions, FALLBACK, formatFallback };
+if (typeof module !== "undefined") module.exports = { filterEntries, normalizeEditions, paginate, PAGE_SIZE, FALLBACK, formatFallback };
 if (typeof document !== "undefined") document.addEventListener("DOMContentLoaded", init, { once: true });

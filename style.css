@@ -1,11 +1,10 @@
 /* Service-specific layout; shared design tokens are kept unchanged. */
-.bib-search {
-  flex-wrap: wrap;
-  align-items: flex-end;
-}
-
-.bib-search > .veda-field:first-child {
-  flex-basis: 100%;
+/* From 40rem: query on its own row, then dataset and button. Below that the
+   shared .veda-search--responsive stacks everything. */
+@media (min-width: 40rem) {
+  .bib-search > .veda-field:first-child {
+    flex-basis: 100%;
+  }
 }
 
 .veda-result__title,
