@@ -5,13 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title data-i18n="page.title">Bibliography search | Veda Bib</title>
-  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-0b90d3c/styles/tokens.css">
-  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-0b90d3c/styles/typography.css">
-  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-0b90d3c/styles/components.css">
+  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-9d65cf4/styles/tokens.css">
+  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-9d65cf4/styles/typography.css">
+  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-9d65cf4/styles/components.css">
   <link rel="stylesheet" href="style.css">
-  <script src="vendor/veda-design/0.1.0-pilot-0b90d3c/scripts/theme.js"></script>
-  <script src="vendor/veda-design/0.1.0-pilot-0b90d3c/scripts/i18n.js" data-veda-locales="../../../../locales/" defer></script>
-  <script src="vendor/veda-design/0.1.0-pilot-0b90d3c/scripts/report.js" defer></script>
+  <script src="vendor/veda-design/0.1.0-pilot-9d65cf4/scripts/theme.js"></script>
+  <script src="vendor/veda-design/0.1.0-pilot-9d65cf4/scripts/i18n.js" data-veda-locales="../../../../locales/" defer></script>
+  <script src="vendor/veda-design/0.1.0-pilot-9d65cf4/scripts/settings.js" defer></script>
+  <script src="vendor/veda-design/0.1.0-pilot-9d65cf4/scripts/report.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body class="veda-root">
@@ -20,16 +21,21 @@
     <div class="veda-container veda-header__inner">
       <a class="veda-brand" href="index.html"><span class="veda-brand__project">VEDA AI</span><span class="veda-brand__service">Veda Bib</span></a>
       <div class="veda-header__tools">
-        <div class="veda-tool" data-veda-requires-js hidden>
-          <label class="veda-label" for="veda-language" data-i18n="common.language.label">Language</label>
-          <select class="veda-select" id="veda-language" data-veda-language><option value="en" lang="en">English</option><option value="ja" lang="ja">日本語</option></select>
-        </div>
-        <div class="veda-tool" data-veda-requires-js hidden>
-          <label class="veda-label" for="veda-theme" data-i18n="common.theme.label">Theme</label>
-          <select class="veda-select" id="veda-theme" data-veda-theme-control>
-            <option value="system" data-i18n="common.theme.system">Use device setting</option><option value="light" data-i18n="common.theme.light">Light</option><option value="dark" data-i18n="common.theme.dark">Dark</option>
-          </select>
-        </div>
+        <details class="veda-settings" data-veda-settings hidden>
+          <summary class="veda-settings__summary"><span data-i18n="common.settings.label">Display settings</span></summary>
+          <div class="veda-settings__panel">
+            <div class="veda-tool" data-veda-requires-js hidden>
+              <label class="veda-label" for="veda-language" data-i18n="common.language.label">Language</label>
+              <select class="veda-select" id="veda-language" data-veda-language><option value="en" lang="en">English</option><option value="ja" lang="ja">日本語</option></select>
+            </div>
+            <div class="veda-tool" data-veda-requires-js hidden>
+              <label class="veda-label" for="veda-theme" data-i18n="common.theme.label">Color theme</label>
+              <select class="veda-select" id="veda-theme" data-veda-theme-control>
+                <option value="system" data-i18n="common.theme.system">Match device setting</option><option value="light" data-i18n="common.theme.light">Light</option><option value="dark" data-i18n="common.theme.dark">Dark</option>
+              </select>
+            </div>
+          </div>
+        </details>
       </div>
     </div>
     <nav class="veda-nav" aria-label="Veda Bib" data-i18n-attr="aria-label:common.nav.label"><div class="veda-container"><ul class="veda-nav__list"><li><a class="veda-nav__link" href="index.html" aria-current="page" data-i18n="common.nav.search">Search</a></li></ul></div></nav>
@@ -39,7 +45,7 @@
       <h1 class="veda-h1" data-i18n="search.title">Abbreviations and bibliography</h1>
       <p class="veda-prose veda-lead" data-i18n="search.lead">Look up abbreviations and bibliography in Vedic philology from JAIBS.</p>
       <noscript><p class="veda-status veda-status--info" data-i18n="common.noscript">JavaScript is required to search. Data sources and terms are available below.</p></noscript>
-      <form id="search-form" class="veda-search bib-search" role="search" aria-label="Search the JAIBS bibliography" data-i18n-attr="aria-label:search.form.label">
+      <form id="search-form" class="veda-search veda-search--responsive bib-search" role="search" aria-label="Search the JAIBS bibliography" data-i18n-attr="aria-label:search.form.label">
         <div class="veda-field">
           <label class="veda-label" for="search" data-i18n="search.form.query">Search term</label>
           <input class="veda-input" id="search" name="q" type="search" autocomplete="off" aria-describedby="search-hint" placeholder="Enter a title or abbreviation" data-i18n-attr="placeholder:search.form.placeholder">
@@ -51,11 +57,23 @@
         </div>
         <button class="veda-button veda-button--primary" type="submit" data-i18n="search.form.submit">Search</button>
       </form>
+      <p class="veda-search-jump" data-veda-requires-js hidden>
+        <a href="#results-title" id="goto-results" data-i18n="search.jump.link">Go to results</a>
+        <span class="veda-hint" id="jump-count"></span>
+      </p>
       <section class="veda-stack" aria-labelledby="results-title">
-        <h2 id="results-title" class="veda-h2" data-i18n="search.results.title">Search results</h2>
+        <h2 id="results-title" class="veda-h2" tabindex="-1" data-i18n="search.results.title">Search results</h2>
         <p id="result-count" class="veda-count" aria-live="polite" aria-atomic="true"></p>
         <div id="search-status" role="status" aria-atomic="true"></div>
         <ol id="results" class="veda-results"></ol>
+        <nav class="veda-pagination" id="pagination" aria-label="Result pages" data-i18n-attr="aria-label:search.pagination.label" hidden>
+          <p class="veda-pagination__range veda-hint" id="pagination-range"></p>
+          <div class="veda-pagination__controls">
+            <button class="veda-button" type="button" id="page-prev" data-i18n="search.pagination.prev">Previous page</button>
+            <span class="veda-pagination__page" id="page-current"></span>
+            <button class="veda-button" type="button" id="page-next" data-i18n="search.pagination.next">Next page</button>
+          </div>
+        </nav>
       </section>
     </div>
   </main>
