@@ -61,6 +61,8 @@
     "submit": "JAIBS 投稿規定",
     "data": "元の文献表（Google Drive）",
     "license": "コードのライセンス（MIT、英語）",
-    "rights": "このプロジェクトのコードは MIT License で提供しています。書誌データの利用条件は未確認で、データには MIT License を適用しません。"
+    "rights": "このプロジェクトのコードは MIT License で提供しています。書誌データの利用条件は未確認で、データには MIT License を適用しません。",
+    "report": "問題を報告",
+    "reportNote": "報告は GitHub の公開 issue になります。GitHub アカウントが必要で、入力した内容は誰でも読めます。個人情報は書かないでください。"
   }
 }

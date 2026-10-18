@@ -38,16 +38,21 @@ and live result/status announcements.
 ## Shared design snapshot
 
 This pilot follows the approved [EWAia adoption approach](https://github.com/Yuzki/ewaia-abbreviations/pull/4).
-The five shared runtime assets are copied unmodified from commit `fbeb384` of
+The six shared runtime assets are copied unmodified from commit `0b90d3c` of
 `Yuzki/veda-ai-design-system`, version 0.1.0 (unreleased, no tag), into
-`vendor/veda-design/0.1.0-pilot-fbeb384/`. There are no CDN or other external
+`vendor/veda-design/0.1.0-pilot-0b90d3c/`. There are no CDN or other external
 runtime requests, build steps, or package dependencies.
 
-See [SOURCE.md](vendor/veda-design/0.1.0-pilot-fbeb384/SOURCE.md) for provenance,
+See [SOURCE.md](vendor/veda-design/0.1.0-pilot-0b90d3c/SOURCE.md) for provenance,
 SHA-256 digests, and terms. Do not edit vendored files. Update by copying a new
 pinned snapshot into a sibling directory and switching the paths in `index.html`;
 keep the old directory until verified. Roll back by restoring those paths or
 reverting the pilot commits. Service-specific styles belong in `style.css`.
+
+The footer "Report a problem" link opens the shared GitHub issue form with
+`service=Veda Bib`; `scripts/report.js` adds `page` (origin and path only, never
+the query or hash). Reports become public GitHub issues, so the footer note says
+that a GitHub account is required and personal information must not be entered.
 
 ## Local development and checks
 
@@ -80,7 +85,7 @@ For browser verification, exercise both datasets, typing, Enter, query retention
 no matches, request failure/retry, and blocked locale requests. Compare English
 and Japanese with light/dark themes at 320, 390, 640, and 1280 px. Check wrapping,
 keyboard order, skip link, focus, reduced motion, and forced colors. Check all
-five vendored file digests against SOURCE.md after any snapshot update.
+six vendored file digests against SOURCE.md after any snapshot update.
 
 ## License and data terms
 
