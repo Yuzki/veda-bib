@@ -17,6 +17,9 @@
       "label": "Veda Bib",
       "search": "Search"
     },
+    "project": {
+      "partOf": "Part of the VEDA AI project (veda-ai.org)"
+    },
     "noscript": "JavaScript is required to search. Data sources and terms are available below."
   },
   "page": {
