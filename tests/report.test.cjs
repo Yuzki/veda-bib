@@ -12,7 +12,7 @@ const web = path.join(__dirname, "..");
 const html = fs.readFileSync(path.join(web, "index.html"), "utf8");
 const en = require("../locales/en.json");
 const ja = require("../locales/ja.json");
-const dir = path.join(web, "vendor/veda-design/0.1.0-pilot-9d65cf4");
+const dir = path.join(web, "vendor/veda-design/0.1.0-pilot-cad0076");
 
 test("footer has one report link for Veda Bib", () => {
     const links = html.match(/<a [^>]*data-veda-report-link[^>]*>/g) || [];

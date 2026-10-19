@@ -48,16 +48,20 @@ focus styles, and live result/status announcements.
 ## Shared design snapshot
 
 This pilot follows the approved [EWAia adoption approach](https://github.com/Yuzki/ewaia-abbreviations/pull/4).
-The seven shared runtime assets are copied unmodified from commit `9d65cf4` of
-`Yuzki/veda-ai-design-system` (upstream PR #9), version 0.1.0 (unreleased, no
-tag), into `vendor/veda-design/0.1.0-pilot-9d65cf4/`. There are no CDN or other
+The seven shared runtime assets are copied unmodified from commit `cad0076` of
+`Yuzki/veda-ai-design-system` (upstream PR #11), version 0.1.0 (unreleased, no
+tag), into `vendor/veda-design/0.1.0-pilot-cad0076/`. There are no CDN or other
 external runtime requests, build steps, or package dependencies.
 
-See [SOURCE.md](vendor/veda-design/0.1.0-pilot-9d65cf4/SOURCE.md) for provenance,
+The footer carries a quiet parent-site reference (`common.project.partOf`,
+"Part of the VEDA AI project (veda-ai.org)") linking to `https://veda-ai.org/`
+in the same tab; the label is translated through `locales/`.
+
+See [SOURCE.md](vendor/veda-design/0.1.0-pilot-cad0076/SOURCE.md) for provenance,
 SHA-256 digests, and terms. Do not edit vendored files. Update by copying a new
 pinned snapshot into a sibling directory and switching the paths in `index.html`;
 keep the old directory until verified. Roll back by reverting the rollout commits
-(the previous `0b90d3c` snapshot is kept). Service-specific styles belong in
+(the previous `9d65cf4` and `0b90d3c` snapshots are kept). Service-specific styles belong in
 `style.css`.
 
 The footer "Report a problem" link opens the shared GitHub issue form with

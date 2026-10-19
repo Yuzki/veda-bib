@@ -17,6 +17,9 @@
       "label": "Veda Bib",
       "search": "検索"
     },
+    "project": {
+      "partOf": "VEDA AI プロジェクト（veda-ai.org）の一部"
+    },
     "noscript": "検索には JavaScript が必要です。データの出典と利用条件は下に記載しています。"
   },
   "page": {
