@@ -24,12 +24,27 @@ no matches, and load errors have visible status messages. Try again retries the
 failed request without clearing the query. Loaded datasets are cached for the
 page session, and stale responses cannot replace the selected dataset.
 
-English is the default interface language. The language control supports English
-and Japanese; `?lang=ja` also selects Japanese. The choice is saved when browser
-storage is available. Source titles, abbreviations, authors, and bibliography
-remain unchanged and untranslated. If locale loading fails, the page remains
-usable in English. JavaScript is required for search; without it the source
-links and terms remain available.
+The interface language follows the browser language (regional tags resolve to
+their base language), with English as the fallback for unsupported languages.
+The language control supports English and Japanese. Source titles,
+abbreviations, authors, and bibliography remain unchanged and untranslated. If
+locale loading fails, the page remains usable in English. JavaScript is required
+for search; without it the source links and terms remain available.
+
+Display preferences are shared with veda-ai.org and its subdomains. Language
+resolves as a valid `?lang=` URL parameter, then the shared `veda-lang` cookie,
+then the older `veda-lang` localStorage value, then the browser languages, then
+English. Color theme resolves the same way with `?theme=` and `veda-theme`,
+falling back to the device (system) setting. Invalid values fall through to the
+next source. Only explicit choices (a URL parameter or the settings controls)
+are saved; detected defaults are never stored. The shared cookie is written with
+`Domain=veda-ai.org; Path=/; Max-Age=31536000; SameSite=Lax; Secure` only over
+HTTPS; on `github.io`, `localhost` and other hosts only localStorage and the URL
+are used, so nothing is shared. Examples: `?lang=en&theme=dark` forces English
+and dark; `?theme=system` returns to the device setting. Changing a setting
+updates only its own URL parameter and keeps other query parameters, the hash
+and history state. The shared cookie is read at the production host
+`bib.veda-ai.org`; the github.io viewer above does not share it.
 
 Language and color theme sit in a closed "Display settings" button at the end of
 the header; opening it shows an overlay panel (Esc, an outside click, or tabbing
@@ -48,20 +63,20 @@ focus styles, and live result/status announcements.
 ## Shared design snapshot
 
 This pilot follows the approved [EWAia adoption approach](https://github.com/Yuzki/ewaia-abbreviations/pull/4).
-The seven shared runtime assets are copied unmodified from commit `cad0076` of
-`Yuzki/veda-ai-design-system` (upstream PR #11), version 0.1.0 (unreleased, no
-tag), into `vendor/veda-design/0.1.0-pilot-cad0076/`. There are no CDN or other
+The seven shared runtime assets are copied unmodified from commit `af6d1dc` of
+`Yuzki/veda-ai-design-system` (upstream PR #13), version 0.1.0 (unreleased, no
+tag), into `vendor/veda-design/0.1.0-pilot-af6d1dc/`. There are no CDN or other
 external runtime requests, build steps, or package dependencies.
 
 The footer carries a quiet parent-site reference (`common.project.partOf`,
 "Part of the VEDA AI project (veda-ai.org)") linking to `https://veda-ai.org/`
 in the same tab; the label is translated through `locales/`.
 
-See [SOURCE.md](vendor/veda-design/0.1.0-pilot-cad0076/SOURCE.md) for provenance,
+See [SOURCE.md](vendor/veda-design/0.1.0-pilot-af6d1dc/SOURCE.md) for provenance,
 SHA-256 digests, and terms. Do not edit vendored files. Update by copying a new
 pinned snapshot into a sibling directory and switching the paths in `index.html`;
 keep the old directory until verified. Roll back by reverting the rollout commits
-(the previous `9d65cf4` and `0b90d3c` snapshots are kept). Service-specific styles belong in
+(the previous `cad0076`, `9d65cf4` and `0b90d3c` snapshots are kept). Service-specific styles belong in
 `style.css`.
 
 The footer "Report a problem" link opens the shared GitHub issue form with
