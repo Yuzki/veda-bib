@@ -55,7 +55,14 @@ test("page markup: settings popover, jump link, results heading and pagination n
     assert.match(html, /<details class="veda-settings" data-veda-settings hidden>/);
     assert.ok(html.indexOf("data-veda-settings") < html.indexOf('id="veda-language"'));
     assert.ok(html.indexOf('id="veda-language"') < html.indexOf('id="veda-theme"'));
-    assert.match(html, /scripts\/settings\.js" defer/);
+    const scripts = [...html.matchAll(/<script src="[^"]*scripts\/(\w+)\.js"([^>]*)>/g)];
+    const names = scripts.map((m) => m[1]);
+    assert.deepEqual(names.slice(0, 3), ["settings", "theme", "i18n"]);
+    assert.equal(names.filter((n) => n === "settings").length, 1);
+    assert.doesNotMatch(scripts[0][2], /defer|async/);
+    assert.doesNotMatch(scripts[1][2], /defer|async/);
+    assert.match(scripts[2][2], /\bdefer\b/);
+    assert.ok(html.indexOf("scripts/i18n.js") < html.indexOf("</head>"));
     assert.match(html, /class="veda-search veda-search--responsive/);
     assert.match(html, /<a href="#results-title" id="goto-results"/);
     assert.match(html, /<h2 id="results-title"[^>]*tabindex="-1"/);
