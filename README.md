@@ -51,9 +51,9 @@ the header; opening it shows an overlay panel (Esc, an outside click, or tabbing
 out closes it). The theme control offers device settings, light, and dark, with
 saved explicit choices; the open/closed state is not saved.
 
-Results show 50 entries per page. The count line keeps the total number of
-matches (for example "138 entries (of 138)"), and the page controls show the
-range ("Showing 1–50 of 138 entries"). Typing, Enter, and a dataset change go back
+Results show 50 entries per page. The count line is the only place the total
+appears (for example "138 entries (of 138)"); the page controls show just the
+range ("Items 1–50") with Previous/Next buttons. Typing, Enter, and a dataset change go back
 to page 1 and keep the search term; a language change keeps the current page; the
 previous/next buttons and the "Go to results" link under the search form move
 focus to the results heading. The search scope is unchanged (titles and
@@ -63,20 +63,21 @@ focus styles, and live result/status announcements.
 ## Shared design snapshot
 
 This pilot follows the approved [EWAia adoption approach](https://github.com/Yuzki/ewaia-abbreviations/pull/4).
-The seven shared runtime assets are copied unmodified from commit `af6d1dc` of
-`Yuzki/veda-ai-design-system` (upstream PR #13), version 0.1.0 (unreleased, no
-tag), into `vendor/veda-design/0.1.0-pilot-af6d1dc/`. There are no CDN or other
+The seven shared runtime assets are copied unmodified from commit `d08f1bf` of
+`Yuzki/veda-ai-design-system` (quiet UI rules, upstream PR #15), version 0.1.0
+(unreleased, no tag), into `vendor/veda-design/0.1.0-pilot-d08f1bf/`. Only
+`styles/components.css` differs from the previous `af6d1dc` snapshot. There are no CDN or other
 external runtime requests, build steps, or package dependencies.
 
 The footer carries a quiet parent-site reference (`common.project.partOf`,
 "Part of the VEDA AI project (veda-ai.org)") linking to `https://veda-ai.org/`
 in the same tab; the label is translated through `locales/`.
 
-See [SOURCE.md](vendor/veda-design/0.1.0-pilot-af6d1dc/SOURCE.md) for provenance,
+See [SOURCE.md](vendor/veda-design/0.1.0-pilot-d08f1bf/SOURCE.md) for provenance,
 SHA-256 digests, and terms. Do not edit vendored files. Update by copying a new
 pinned snapshot into a sibling directory and switching the paths in `index.html`;
 keep the old directory until verified. Roll back by reverting the rollout commits
-(the previous `cad0076`, `9d65cf4` and `0b90d3c` snapshots are kept). Service-specific styles belong in
+(the previous `af6d1dc`, `cad0076`, `9d65cf4` and `0b90d3c` snapshots are kept). Service-specific styles belong in
 `style.css`.
 
 The footer "Report a problem" link opens the shared GitHub issue form with
