@@ -20,7 +20,7 @@
     "project": {
       "partOf": "VEDA AI プロジェクト（veda-ai.org）の一部"
     },
-    "noscript": "検索には JavaScript が必要です。データの出典と利用条件は下に記載しています。"
+    "noscript": "検索するには、ブラウザーの JavaScript を有効にしてください。"
   },
   "page": {
     "title": "略号・文献検索 | Veda Bib"
@@ -31,12 +31,12 @@
       "label": "JAIBS の文献を検索",
       "query": "検索語",
       "hint": "検索対象は書名と略号です。",
-      "dataset": "データセット",
+      "dataset": "文献の種類",
       "submit": "検索"
     },
     "datasets": {
-      "jaibs-1": "1次文献",
-      "jaibs-2": "2次文献"
+      "jaibs-1": "一次文献",
+      "jaibs-2": "二次文献"
     },
     "results": {
       "title": "検索結果",
@@ -47,23 +47,23 @@
     },
     "meta": {
       "abbreviation": "略号",
-      "edition": "版の書誌情報"
+      "edition": "版"
     },
     "status": {
-      "loadingTitle": "項目を読み込んでいます",
-      "emptyTitle": "該当する項目はありません",
-      "emptyBody": "検索語を短くするか、別のデータセットを選んでください。",
-      "errorTitle": "項目を読み込めませんでした",
-      "errorBody": "接続を確認してください。",
-      "retry": "再試行"
+      "loadingTitle": "文献を読み込んでいます",
+      "emptyTitle": "該当する文献はありません",
+      "emptyBody": "検索語を短くするか、文献の種類を変えてください。",
+      "errorTitle": "文献を読み込めませんでした",
+      "errorBody": "もう一度読み込んでください。",
+      "retry": "再読み込み"
     },
     "jump": {
       "link": "検索結果へ移動"
     },
     "pagination": {
       "label": "結果のページ移動",
-      "prev": "戻る",
-      "next": "進む",
+      "prev": "前へ",
+      "next": "次へ",
       "page": "{page} / {pages} ページ",
       "range": "{from}–{to}件目"
     }
@@ -75,6 +75,6 @@
     "license": "コードのライセンス（MIT、英語）",
     "rights": "このプロジェクトのコードは MIT License で提供しています。書誌データの利用条件は未確認で、データには MIT License を適用しません。",
     "report": "問題を報告",
-    "reportNote": "報告は GitHub の公開 issue になります。GitHub アカウントが必要で、入力した内容は誰でも読めます。個人情報は書かないでください。"
+    "reportNote": "報告は公開されます。GitHub アカウントが必要です。個人情報は含めないでください。"
   }
 }

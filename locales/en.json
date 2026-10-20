@@ -20,7 +20,7 @@
     "project": {
       "partOf": "Part of the VEDA AI project (veda-ai.org)"
     },
-    "noscript": "JavaScript is required to search. Data sources and terms are available below."
+    "noscript": "Enable JavaScript in your browser to search."
   },
   "page": {
     "title": "Bibliography search | Veda Bib"
@@ -31,7 +31,7 @@
       "label": "Search the JAIBS bibliography",
       "query": "Search term",
       "hint": "Search covers titles and abbreviations only.",
-      "dataset": "Dataset",
+      "dataset": "Literature type",
       "submit": "Search"
     },
     "datasets": {
@@ -50,12 +50,12 @@
       "edition": "Editions"
     },
     "status": {
-      "loadingTitle": "Loading entries",
-      "emptyTitle": "No matching entries",
-      "emptyBody": "Try a shorter search term or another dataset.",
-      "errorTitle": "Could not load entries",
-      "errorBody": "Check your connection.",
-      "retry": "Retry"
+      "loadingTitle": "Loading literature",
+      "emptyTitle": "No matching literature",
+      "emptyBody": "Try a shorter search term or another literature type.",
+      "errorTitle": "Could not load literature",
+      "errorBody": "Try loading again.",
+      "retry": "Reload"
     },
     "jump": {
       "link": "Go to results"
@@ -75,6 +75,6 @@
     "license": "Code license (MIT)",
     "rights": "This project’s code is licensed under the MIT License. The terms for the bibliography data are unconfirmed, and the MIT License does not apply to the data.",
     "report": "Report a problem",
-    "reportNote": "Reports become public GitHub issues. A GitHub account is required, and anything you write can be read by anyone. Do not include personal information."
+    "reportNote": "Reports are public. A GitHub account is required. Do not include personal information."
   }
 }
