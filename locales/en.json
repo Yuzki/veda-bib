@@ -26,13 +26,11 @@
     "title": "Bibliography search | Veda Bib"
   },
   "search": {
-    "title": "Abbreviations and bibliography",
-    "lead": "Look up abbreviations and bibliography in Vedic philology from JAIBS.",
+    "title": "Bibliography",
     "form": {
       "label": "Search the JAIBS bibliography",
       "query": "Search term",
-      "placeholder": "Enter a title or abbreviation",
-      "hint": "Search titles and abbreviations, ignoring case. Edition text is not searched. Leave blank to show all entries.",
+      "hint": "Search covers titles and abbreviations only.",
       "dataset": "Dataset",
       "submit": "Search"
     },
@@ -41,7 +39,7 @@
       "jaibs-2": "Secondary literature"
     },
     "results": {
-      "title": "Search results",
+      "title": "Results",
       "count": {
         "one": "{count} entry (of {total})",
         "other": "{count} entries (of {total})"
@@ -53,29 +51,24 @@
     },
     "status": {
       "loadingTitle": "Loading entries",
-      "loadingBody": "You can keep changing your search term.",
       "emptyTitle": "No matching entries",
       "emptyBody": "Try a shorter search term or another dataset.",
       "errorTitle": "Could not load entries",
-      "errorBody": "Your search term is preserved. Check your connection and try again.",
-      "retry": "Try again"
+      "errorBody": "Check your connection.",
+      "retry": "Retry"
     },
     "jump": {
       "link": "Go to results"
     },
     "pagination": {
       "label": "Result pages",
-      "prev": "Previous page",
-      "next": "Next page",
+      "prev": "Previous",
+      "next": "Next",
       "page": "Page {page} of {pages}",
-      "range": {
-        "one": "Showing {from}–{to} of {count} entry",
-        "other": "Showing {from}–{to} of {count} entries"
-      }
+      "range": "Items {from}–{to}"
     }
   },
   "footer": {
-    "about": "Bibliographic source material from JAIBS. Entry text is shown as supplied.",
     "repository": "Source code (GitHub)",
     "submit": "JAIBS submission page",
     "data": "Source bibliography (Google Drive)",

@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light dark">
   <title data-i18n="page.title">Bibliography search | Veda Bib</title>
-  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-af6d1dc/styles/tokens.css">
-  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-af6d1dc/styles/typography.css">
-  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-af6d1dc/styles/components.css">
+  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-d08f1bf/styles/tokens.css">
+  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-d08f1bf/styles/typography.css">
+  <link rel="stylesheet" href="vendor/veda-design/0.1.0-pilot-d08f1bf/styles/components.css">
   <link rel="stylesheet" href="style.css">
-  <script src="vendor/veda-design/0.1.0-pilot-af6d1dc/scripts/settings.js"></script>
-  <script src="vendor/veda-design/0.1.0-pilot-af6d1dc/scripts/theme.js"></script>
-  <script src="vendor/veda-design/0.1.0-pilot-af6d1dc/scripts/i18n.js" data-veda-locales="../../../../locales/" defer></script>
-  <script src="vendor/veda-design/0.1.0-pilot-af6d1dc/scripts/report.js" defer></script>
+  <script src="vendor/veda-design/0.1.0-pilot-d08f1bf/scripts/settings.js"></script>
+  <script src="vendor/veda-design/0.1.0-pilot-d08f1bf/scripts/theme.js"></script>
+  <script src="vendor/veda-design/0.1.0-pilot-d08f1bf/scripts/i18n.js" data-veda-locales="../../../../locales/" defer></script>
+  <script src="vendor/veda-design/0.1.0-pilot-d08f1bf/scripts/report.js" defer></script>
   <script src="script.js" defer></script>
 </head>
 <body class="veda-root">
@@ -42,14 +42,13 @@
   </header>
   <main id="main" class="veda-main veda-container" tabindex="-1">
     <div class="veda-stack">
-      <h1 class="veda-h1" data-i18n="search.title">Abbreviations and bibliography</h1>
-      <p class="veda-prose veda-lead" data-i18n="search.lead">Look up abbreviations and bibliography in Vedic philology from JAIBS.</p>
+      <h1 class="veda-h1" data-i18n="search.title">Bibliography</h1>
       <noscript><p class="veda-status veda-status--info" data-i18n="common.noscript">JavaScript is required to search. Data sources and terms are available below.</p></noscript>
       <form id="search-form" class="veda-search veda-search--responsive bib-search" role="search" aria-label="Search the JAIBS bibliography" data-i18n-attr="aria-label:search.form.label">
         <div class="veda-field">
           <label class="veda-label" for="search" data-i18n="search.form.query">Search term</label>
-          <input class="veda-input" id="search" name="q" type="search" autocomplete="off" aria-describedby="search-hint" placeholder="Enter a title or abbreviation" data-i18n-attr="placeholder:search.form.placeholder">
-          <p class="veda-hint" id="search-hint" data-i18n="search.form.hint">Search titles and abbreviations, ignoring case. Edition text is not searched. Leave blank to show all entries.</p>
+          <input class="veda-input" id="search" name="q" type="search" autocomplete="off" aria-describedby="search-hint">
+          <p class="veda-hint" id="search-hint" data-i18n="search.form.hint">Search covers titles and abbreviations only.</p>
         </div>
         <div class="veda-field">
           <label class="veda-label" for="dataset-select" data-i18n="search.form.dataset">Dataset</label>
@@ -59,26 +58,24 @@
       </form>
       <p class="veda-search-jump" data-veda-requires-js hidden>
         <a href="#results-title" id="goto-results" data-i18n="search.jump.link">Go to results</a>
-        <span class="veda-hint" id="jump-count"></span>
       </p>
       <section class="veda-stack" aria-labelledby="results-title">
-        <h2 id="results-title" class="veda-h2" tabindex="-1" data-i18n="search.results.title">Search results</h2>
+        <h2 id="results-title" class="veda-h2" tabindex="-1" data-i18n="search.results.title">Results</h2>
         <p id="result-count" class="veda-count" aria-live="polite" aria-atomic="true"></p>
         <div id="search-status" role="status" aria-atomic="true"></div>
         <ol id="results" class="veda-results"></ol>
         <nav class="veda-pagination" id="pagination" aria-label="Result pages" data-i18n-attr="aria-label:search.pagination.label" hidden>
           <p class="veda-pagination__range veda-hint" id="pagination-range"></p>
           <div class="veda-pagination__controls">
-            <button class="veda-button" type="button" id="page-prev" data-i18n="search.pagination.prev">Previous page</button>
+            <button class="veda-button" type="button" id="page-prev" data-i18n="search.pagination.prev">Previous</button>
             <span class="veda-pagination__page" id="page-current"></span>
-            <button class="veda-button" type="button" id="page-next" data-i18n="search.pagination.next">Next page</button>
+            <button class="veda-button" type="button" id="page-next" data-i18n="search.pagination.next">Next</button>
           </div>
         </nav>
       </section>
     </div>
   </main>
   <footer class="veda-footer"><div class="veda-container veda-footer__inner">
-    <p data-i18n="footer.about">Bibliographic source material from JAIBS. Entry text is shown as supplied.</p>
     <p class="veda-project-reference"><a href="https://veda-ai.org/" data-i18n="common.project.partOf">Part of the VEDA AI project (veda-ai.org)</a></p>
     <ul class="veda-footer__links">
       <li><a href="https://github.com/Yuzki/veda-bib" data-i18n="footer.repository">Source code (GitHub)</a></li>

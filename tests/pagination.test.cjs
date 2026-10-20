@@ -40,15 +40,21 @@ test("pages together show every entry once, in the original order", () => {
     }
 });
 
-test("pagination range uses plural forms and interpolation", () => {
-    const key = ["search", "pagination", "range"];
-    const pick = (messages) => key.reduce((node, name) => node[name], messages);
-    assert.equal(pick(en).one, "Showing {from}–{to} of {count} entry");
-    assert.equal(pick(en).other, "Showing {from}–{to} of {count} entries");
-    assert.equal(pick(ja).other, "{from}–{to}件目 / 全{count}件");
-    assert.equal(formatFallback("search.pagination.range", { from: 51, to: 100, count: 1200 }), "Showing 51–100 of 1,200 entries");
-    assert.equal(formatFallback("search.pagination.range", { from: 1, to: 1, count: 1 }), "Showing 1–1 of 1 entry");
+test("pagination range shows only the item range, not the total", () => {
+    assert.equal(en.search.pagination.range, "Items {from}–{to}");
+    assert.equal(ja.search.pagination.range, "{from}–{to}件目");
+    assert.equal(formatFallback("search.pagination.range", { from: 51, to: 100 }), "Items 51–100");
     assert.equal(formatFallback("search.pagination.page", { page: 2, pages: 3 }), "Page 2 of 3");
+});
+
+test("quiet UI: the total appears once and every aria-describedby target exists", () => {
+    assert.doesNotMatch(html, /id="jump-count"/);
+    assert.equal((html.match(/id="result-count"/g) || []).length, 1);
+    assert.doesNotMatch(fs.readFileSync(path.join(web, "script.js"), "utf8"), /jump-?[cC]ount/);
+    for (const [, ids] of html.matchAll(/aria-describedby="([^"]+)"/g)) {
+        for (const id of ids.split(/\s+/)) assert.match(html, new RegExp(`id="${id}"`), id);
+    }
+    assert.equal((html.match(/<h1[ >]/g) || []).length, 1);
 });
 
 test("page markup: settings popover, jump link, results heading and pagination nav", () => {

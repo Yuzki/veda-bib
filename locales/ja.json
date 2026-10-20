@@ -26,13 +26,11 @@
     "title": "略号・文献検索 | Veda Bib"
   },
   "search": {
-    "title": "略号・文献検索",
-    "lead": "JAIBS によるヴェーダ文献学の略号と書誌情報を調べます。",
+    "title": "略号・文献",
     "form": {
       "label": "JAIBS の文献を検索",
       "query": "検索語",
-      "placeholder": "書名または略号を入力",
-      "hint": "書名と略号の一部を検索します。大文字と小文字は区別しません。版の書誌情報は検索対象外です。空欄にすると全件を表示します。",
+      "hint": "検索対象は書名と略号です。",
       "dataset": "データセット",
       "submit": "検索"
     },
@@ -53,11 +51,10 @@
     },
     "status": {
       "loadingTitle": "項目を読み込んでいます",
-      "loadingBody": "検索語は、このまま変更できます。",
       "emptyTitle": "該当する項目はありません",
       "emptyBody": "検索語を短くするか、別のデータセットを選んでください。",
       "errorTitle": "項目を読み込めませんでした",
-      "errorBody": "検索語は保持されています。接続を確認して、もう一度お試しください。",
+      "errorBody": "接続を確認してください。",
       "retry": "再試行"
     },
     "jump": {
@@ -65,17 +62,13 @@
     },
     "pagination": {
       "label": "結果のページ移動",
-      "prev": "前のページ",
-      "next": "次のページ",
+      "prev": "戻る",
+      "next": "進む",
       "page": "{page} / {pages} ページ",
-      "range": {
-        "one": "{from}–{to}件目 / 全{count}件",
-        "other": "{from}–{to}件目 / 全{count}件"
-      }
+      "range": "{from}–{to}件目"
     }
   },
   "footer": {
-    "about": "JAIBS の書誌資料です。各項目の本文は原データのまま表示します。",
     "repository": "ソースコード（GitHub）",
     "submit": "JAIBS 投稿規定",
     "data": "元の文献表（Google Drive）",

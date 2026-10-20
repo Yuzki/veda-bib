@@ -26,19 +26,18 @@ function paginate(total, page, size = PAGE_SIZE) {
 const FALLBACK = {
     "search.results.count": { one: "{count} entry (of {total})", other: "{count} entries (of {total})" },
     "search.jump.link": "Go to results",
-    "search.pagination.prev": "Previous page",
-    "search.pagination.next": "Next page",
+    "search.pagination.prev": "Previous",
+    "search.pagination.next": "Next",
     "search.pagination.page": "Page {page} of {pages}",
-    "search.pagination.range": { one: "Showing {from}–{to} of {count} entry", other: "Showing {from}–{to} of {count} entries" },
+    "search.pagination.range": "Items {from}–{to}",
     "search.meta.abbreviation": "Abbreviations",
     "search.meta.edition": "Editions",
     "search.status.loadingTitle": "Loading entries",
-    "search.status.loadingBody": "You can keep changing your search term.",
     "search.status.emptyTitle": "No matching entries",
     "search.status.emptyBody": "Try a shorter search term or another dataset.",
     "search.status.errorTitle": "Could not load entries",
-    "search.status.errorBody": "Your search term is preserved. Check your connection and try again.",
-    "search.status.retry": "Try again",
+    "search.status.errorBody": "Check your connection.",
+    "search.status.retry": "Retry",
     "search.datasets.jaibs-1": "Primary literature",
     "search.datasets.jaibs-2": "Secondary literature",
 };
@@ -57,7 +56,6 @@ function init() {
     const results = document.getElementById("results");
     const count = document.getElementById("result-count");
     const status = document.getElementById("search-status");
-    const jumpCount = document.getElementById("jump-count");
     const heading = document.getElementById("results-title");
     const nav = document.getElementById("pagination");
     const cache = new Map();
@@ -98,7 +96,6 @@ function init() {
         results.replaceChildren();
         status.replaceChildren();
         count.textContent = "";
-        jumpCount.textContent = "";
         nav.hidden = true;
         results.setAttribute("aria-busy", String(state === "loading"));
         if (state !== "ready") {
@@ -107,12 +104,11 @@ function init() {
         }
         const entries = filterEntries(data, search.value);
         const summary = t("search.results.count", { count: entries.length, total: Object.keys(data).length });
-        count.textContent = summary; // the only live region; the jump line is plain text
-        jumpCount.textContent = summary;
+        count.textContent = summary; // the only live region and the only place the total appears
         if (!entries.length) showStatus("empty");
         const view = paginate(entries.length, page);
         page = view.page;
-        renderPagination(view, entries.length);
+        renderPagination(view);
         const fragment = document.createDocumentFragment();
         for (const [title, value] of entries.slice(view.offset, view.offset + PAGE_SIZE)) {
             const li = element("li", undefined, "veda-result");
@@ -140,9 +136,9 @@ function init() {
         results.append(fragment);
     }
 
-    function renderPagination(view, total) {
+    function renderPagination(view) {
         nav.hidden = view.pages === 1;
-        document.getElementById("pagination-range").textContent = t("search.pagination.range", { from: view.from, to: view.to, count: total });
+        document.getElementById("pagination-range").textContent = t("search.pagination.range", { from: view.from, to: view.to });
         document.getElementById("page-current").textContent = t("search.pagination.page", { page: view.page, pages: view.pages });
         document.getElementById("page-prev").disabled = view.page === 1;
         document.getElementById("page-next").disabled = view.page === view.pages;
@@ -160,7 +156,8 @@ function init() {
         const icon = element("span", kind === "error" ? "!" : "i", "veda-status__icon");
         icon.setAttribute("aria-hidden", "true");
         const body = element("div", undefined, "veda-status__body");
-        body.append(element("p", t(`search.status.${kind}Title`), "veda-status__title"), element("p", t(`search.status.${kind}Body`)));
+        body.append(element("p", t(`search.status.${kind}Title`), "veda-status__title"));
+        if (kind !== "loading") body.append(element("p", t(`search.status.${kind}Body`)));
         if (kind === "error") {
             const retry = element("button", t("search.status.retry"), "veda-button");
             retry.type = "button";
@@ -227,7 +224,7 @@ function init() {
     });
     document.getElementById("page-prev").addEventListener("click", () => goToPage(page - 1));
     document.getElementById("page-next").addEventListener("click", () => goToPage(page + 1));
-    jumpCount.parentElement.hidden = false; // the jump line needs this script
+    document.querySelector(".veda-search-jump").hidden = false; // the jump line needs this script
     document.getElementById("goto-results").addEventListener("click", (event) => {
         event.preventDefault();
         heading.focus();
