@@ -12,7 +12,7 @@ const web = path.join(__dirname, "..");
 const html = fs.readFileSync(path.join(web, "index.html"), "utf8");
 const en = require("../locales/en.json");
 const ja = require("../locales/ja.json");
-const dir = path.join(web, "vendor/veda-design/0.1.0-pilot-d08f1bf");
+const dir = path.join(web, "vendor/veda-design/0.1.0-pilot-a8b1e40");
 
 test("footer has one report link for Veda Bib", () => {
     const links = html.match(/<a [^>]*data-veda-report-link[^>]*>/g) || [];
@@ -64,4 +64,11 @@ test("vendored files match SOURCE.md digests", () => {
     for (const [, file, digest] of rows) {
         assert.equal(crypto.createHash("sha256").update(fs.readFileSync(path.join(dir, file))).digest("hex"), digest, file);
     }
+});
+
+test("index.html loads all seven shared assets from this snapshot only", () => {
+    const refs = [...html.matchAll(/(?:href|src)="(vendor\/veda-design\/[^"]+)"/g)].map((m) => m[1]);
+    const files = ["styles/tokens.css", "styles/typography.css", "styles/components.css", "scripts/settings.js", "scripts/theme.js", "scripts/i18n.js", "scripts/report.js"];
+    const expected = files.map((f) => "vendor/veda-design/0.1.0-pilot-a8b1e40/" + f);
+    assert.deepEqual(refs.sort(), expected.sort());
 });

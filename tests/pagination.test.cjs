@@ -58,9 +58,29 @@ test("quiet UI: the total appears once and every aria-describedby target exists"
 });
 
 test("page markup: settings popover, jump link, results heading and pagination nav", () => {
-    assert.match(html, /<details class="veda-settings" data-veda-settings hidden>/);
-    assert.ok(html.indexOf("data-veda-settings") < html.indexOf('id="veda-language"'));
-    assert.ok(html.indexOf('id="veda-language"') < html.indexOf('id="veda-theme"'));
+    const entries = [...html.matchAll(/<details class="veda-settings" data-veda-settings="(language|theme)" hidden>([\s\S]*?)<\/details>/g)];
+    assert.deepEqual(entries.map((m) => m[1]), ["language", "theme"]);
+    assert.equal((html.match(/data-veda-settings/g) || []).length, 2);
+    const [lang, theme] = entries.map((m) => m[2]);
+    for (const part of [lang, theme]) {
+        assert.match(part, /<summary class="veda-settings__summary veda-settings__summary--icon"/);
+        assert.equal((part.match(/<select /g) || []).length, 1);
+        assert.equal((part.match(/<label /g) || []).length, 1);
+        assert.doesNotMatch(part, /common\.settings\.label/);
+        for (const svg of part.match(/<svg [^>]*>/g)) {
+            assert.match(svg, /aria-hidden="true" focusable="false"/);
+            assert.match(svg, /stroke="currentColor"/);
+        }
+    }
+    assert.match(lang, /data-veda-language-entry aria-label="Language EN"/);
+    assert.match(lang, /<span class="veda-settings__code" data-veda-language-code>EN<\/span>/);
+    assert.match(lang, /<label [^>]*for="veda-language"/);
+    assert.match(lang, /<select [^>]*id="veda-language" data-veda-language>/);
+    assert.match(theme, /data-veda-theme-entry data-veda-theme-state="system" aria-label="Color theme: Match device setting"/);
+    for (const k of ["system", "light", "dark"]) assert.match(theme, new RegExp(`class="veda-icon veda-icon--${k}"`));
+    assert.match(theme, /<label [^>]*for="veda-theme"/);
+    assert.match(theme, /<select [^>]*id="veda-theme" data-veda-theme-control>/);
+    for (const id of ["veda-language", "veda-theme"]) assert.equal((html.match(new RegExp(`id="${id}"`, "g")) || []).length, 1);
     const scripts = [...html.matchAll(/<script src="[^"]*scripts\/(\w+)\.js"([^>]*)>/g)];
     const names = scripts.map((m) => m[1]);
     assert.deepEqual(names.slice(0, 3), ["settings", "theme", "i18n"]);
