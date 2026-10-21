@@ -18,8 +18,8 @@ search shows every entry. Switching the literature type keeps the search term.
 Results show 50 entries per page.
 
 The interface language follows the browser language, with English for
-unsupported languages. Language and color theme can be changed in "Display
-settings" in the header; the choice is shared with veda-ai.org and its
+unsupported languages. Language and color theme can be changed with the two
+icon buttons (globe with language code, and device/sun/moon) in the header; the choice is shared with veda-ai.org and its
 subdomains. Source titles, abbreviations, authors, and bibliography are not
 translated. JavaScript is required for search; without it the source links and
 terms remain available.
@@ -74,30 +74,31 @@ and history state. The shared cookie is read at the production host
 `bib.veda-ai.org`; the earlier GitHub Pages entry
 (https://yuzki.github.io/veda-bib/index.html) does not share it.
 
-The settings button is closed by default at the end of the header; opening it
-shows an overlay panel (Esc, an outside click, or tabbing out closes it). The
-theme control offers device settings, light, and dark; the open/closed state is
-not saved.
+The language and color-theme buttons are closed by default at the end of the
+header; each opens an overlay panel with one labelled select. Opening one closes
+the other; Esc (focus returns to the button), an outside click, or tabbing out
+closes it. The theme control offers device settings, light, and dark; the
+open/closed state is not saved.
 
 ### Shared design snapshot
 
 The service uses a pinned VEDA AI design snapshot. It follows the approved
 [EWAia adoption approach](https://github.com/Yuzki/ewaia-abbreviations/pull/4).
-The seven shared runtime assets are copied unmodified from commit `d08f1bf` of
-`Yuzki/veda-ai-design-system` (quiet UI rules, upstream PR #15), version 0.1.0
-(unreleased, no tag), into `vendor/veda-design/0.1.0-pilot-d08f1bf/`. Only
-`styles/components.css` differs from the previous `af6d1dc` snapshot. There are
+The seven shared runtime assets are copied unmodified from commit `a8b1e40` of
+`Yuzki/veda-ai-design-system` (icon-only display settings, upstream PR #17), version 0.1.0
+(unreleased, no tag), into `vendor/veda-design/0.1.0-pilot-a8b1e40/`. Only
+`tokens.css`, `typography.css` and `report.js` are unchanged from the previous `d08f1bf` snapshot. There are
 no CDN or other external runtime requests, build steps, or package dependencies.
 
 The footer carries a quiet parent-site reference (`common.project.partOf`,
 "Part of the VEDA AI project (veda-ai.org)") linking to `https://veda-ai.org/`
 in the same tab; the label is translated through `locales/`.
 
-See [SOURCE.md](vendor/veda-design/0.1.0-pilot-d08f1bf/SOURCE.md) for provenance,
+See [SOURCE.md](vendor/veda-design/0.1.0-pilot-a8b1e40/SOURCE.md) for provenance,
 SHA-256 digests, and terms. Do not edit vendored files. Update by copying a new
 pinned snapshot into a sibling directory and switching the paths in `index.html`;
 keep the old directory until verified. Roll back by reverting the rollout commits
-(the previous `af6d1dc`, `cad0076`, `9d65cf4` and `0b90d3c` snapshots are kept).
+(the previous `d08f1bf`, `af6d1dc`, `cad0076`, `9d65cf4` and `0b90d3c` snapshots are kept).
 Service-specific styles belong in `style.css`.
 
 The footer report link adds `page` (origin and path only, never the query or
@@ -128,13 +129,13 @@ The explicit file glob is needed because Node 24 does not accept `tests/` as a
 test entrypoint here. Tests compare the original predicate on both real datasets,
 check edition normalization, and validate locale keys, placeholders, plural
 forms, English fallbacks, static text, and profile files, plus the 50-entry
-page ranges and the settings/jump/pagination markup. No Python project or
+page ranges and the two-entry settings/jump/pagination markup. No Python project or
 Python application code is present, so Python lint/type/test checks do not apply.
 
 For browser verification, exercise both literature types, typing, Enter, query
 retention, no matches, request failure/reload, and blocked locale requests. Also
 page through all 138 primary entries, change literature type/language/theme
-while on a later page, and open the settings panel (Esc returns focus to its
+while on a later page, and open each settings panel (Esc returns focus to its
 button, and the header height does not change). Compare English and Japanese
 with light/dark themes at 320, 390, 640, and 1280 px. Check wrapping, keyboard
 order, skip link, focus, reduced motion, and forced colors. Check all seven
